@@ -1,0 +1,10 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+/.gitignore
+/modules.xml
+/vcs.xml
+/work1204.iml
+../.idea/*
