@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>找交集</title>
+</head>
+<body>
+<h1>找交集</h1>
+</body>
+<script>
+    function intersection(nums1, nums2) {
+        // 先对两个数组进行排序
+        nums1.sort((a, b) => a - b);
+        nums2.sort((a, b) => a - b);
+
+        const result = [];
+        let i = 0, j = 0;
+
+        // 使用双指针法遍历两个数组
+        while (i < nums1.length && j < nums2.length) {
+            if (nums1[i] === nums2[j]) {
+                // 如果相同，加入结果数组并跳过重复元素
+                if (result[result.length - 1] !== nums1[i]) {
+                    result.push(nums1[i]);
+                }
+                i++;
+                j++;
+            } else if (nums1[i] < nums2[j]) {
+                // 如果 nums1[i] 小于 nums2[j]，移动 nums1 的指针
+                i++;
+            } else {
+                // 如果 nums1[i] 大于 nums2[j]，移动 nums2 的指针
+                j++;
+            }
+        }
+
+        return result;
+    }
+    
+    function intersection1(num1,num2) {
+        let j;
+        let i;
+        const nums = [];
+        if (num1.length < num2.length){
+            for (i = 0; i < num1.length; i++) {
+                for (j = 0; j < num2.length; j++) {
+                    if (num1[i] === num2[j]){
+                        nums.push(num1[i]);
+                    }
+                }
+            }
+        }else{
+            for (i = 0; i < num2.length; i++) {
+                for (j = 0; j < num1.length; j++) {
+                    if (num1[i] === num2[j]){
+                        nums.push(num2[i]);
+                    }
+                }
+            }
+        }
+        const result = [];
+        for (let i = 0; i < nums.length; i++) {
+            if (!result.includes(nums[i])) {
+                result.push(nums[i]);
+            }
+        }
+        return result
+    }
+
+    // 测试案例
+    console.log(intersection1([1, 2, 2, 1], [2, 2])); // 输出: [2]
+    console.log(intersection1([4, 9, 5], [9, 4, 9, 8, 4])); // 输出: [9, 4]
+
+</script>
+</html>

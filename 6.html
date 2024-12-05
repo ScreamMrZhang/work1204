@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算数字加起来的结果</title>
+</head>
+<body>
+<h1>计算数字加起来的结果</h1>
+</body>
+<script>
+    function add(num) {
+        if (num<0){
+            return "输入有误";
+        }
+        var sNum = num+"";
+        var sum = 0;
+        for (let i = 0; i < sNum.length; i++) {
+            switch (sNum.charAt(i)) {
+                case "0" : sum+=0;break;
+                case "1" : sum+=1;break;
+                case "2" : sum+=2;break;
+                case "3" : sum+=3;break;
+                case "4" : sum+=4;break;
+                case "5" : sum+=5;break;
+                case "6" : sum+=6;break;
+                case "7" : sum+=7;break;
+                case "8" : sum+=8;break;
+                case "9" : sum+=9;break;
+                default : sum+=0;
+            }
+        }
+        if (sum > 9){
+            sum = add(sum);
+        }
+        return sum;
+    }
+
+    console.log(add(3888));
+</script>
+</html>

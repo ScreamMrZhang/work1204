@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>找键盘上同一行单词</title>
+</head>
+<body>
+<h1>找键盘上同一行单词</h1>
+</body>
+<script>
+    function keyword(words){
+        var l1 = "qwertyuiop";
+        var l2 = "asdfghjkl";
+        var l3 = "zxcvbnm";
+        var result=[];
+        for (let i = 0; i < words.length; i++) {
+
+            var word = words[i].toLowerCase();
+            console.log(word);
+            var flag = 0;
+            var firstFlag = 0;
+            var isLine =true;
+            var j =0;
+            for ( j; j < word.length; j++) {
+                if (l1.indexOf(word[j]) !== -1){
+                    if (j===0){
+                        firstFlag =1;
+                    }
+                    flag = 1;
+                }
+                if (l2.indexOf(word[j]) !== -1){
+                    if (j===0){
+                        firstFlag =2;
+                    }
+                    flag = 2;
+                }
+                if (l3.indexOf(word[j]) !== -1){
+                    if (j===0){
+                        firstFlag =3;
+                    }
+                    flag = 3;
+                }
+                if (isLine){
+                    if (firstFlag !== flag){
+                        isLine = false;
+                        break;
+                    }
+                }
+
+            }
+            if (isLine){
+                result.push(words[i]);
+            }
+        }
+        return result;
+    }
+
+    console.log(keyword(["Dad","Bad","zxcv","AAsaa"]));
+</script>
+</html>

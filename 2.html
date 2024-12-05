@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>罗马数字</title>
+</head>
+<body>
+<h1>罗马数字</h1>
+</body>
+
+<script>
+    function parseRomeNumber(rome) {
+        var result = 0;
+
+        // 遍历罗马数字字符串
+        for (var i = 0; i < rome.length; i++) {
+            var currentVal = 0;
+            var nextVal = 0;
+
+            // 获取当前字符对应的值
+            switch (rome[i]) {
+                case 'I': currentVal = 1; break;
+                case 'V': currentVal = 5; break;
+                case 'X': currentVal = 10; break;
+                case 'L': currentVal = 50; break;
+                case 'C': currentVal = 100; break;
+                case 'D': currentVal = 500; break;
+                case 'M': currentVal = 1000; break;
+                default: currentVal = 0; // 无效字符处理（如果有）
+            }
+
+            // 获取下一个字符对应的值
+            if (i + 1 < rome.length) {
+                switch (rome[i + 1]) {
+                    case 'I': nextVal = 1; break;
+                    case 'V': nextVal = 5; break;
+                    case 'X': nextVal = 10; break;
+                    case 'L': nextVal = 50; break;
+                    case 'C': nextVal = 100; break;
+                    case 'D': nextVal = 500; break;
+                    case 'M': nextVal = 1000; break;
+                    default: nextVal = 0;
+                }
+            }
+
+
+            if (currentVal < nextVal) {
+                result -= currentVal;
+            } else {
+                result += currentVal;
+            }
+        }
+
+        return result;
+    }
+
+    // 测试案例
+    console.log(parseRomeNumber("II")); // 2
+    console.log(parseRomeNumber("VI")); // 6
+    console.log(parseRomeNumber("IV")); // 4
+    console.log(parseRomeNumber("CD")); // 400
+    console.log(parseRomeNumber("CDXCVIII")); // 498
+</script>
+</html>

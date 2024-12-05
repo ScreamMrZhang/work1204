@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>杨辉三角</title>
+</head>
+<body>
+<h1>杨辉三角</h1>
+</body>
+<script>
+    function generate(numRows) {
+        // 创建一个二维数组来存储杨辉三角
+        var triangle = [];
+
+        // 循环生成每一行
+        for (var row = 0; row < numRows; row++) {
+            // 每一行都是一个新的数组
+            var currentRow = new Array(row + 1);
+
+            // 设置每行的第一个和最后一个元素为 1
+            currentRow[0] = 1;
+            currentRow[row] = 1;
+
+            // 填充每行中间的元素
+            for (var col = 1; col < row; col++) {
+                currentRow[col] = triangle[row - 1][col - 1] + triangle[row - 1][col];
+            }
+
+            // 将当前行添加到 triangle 中
+            triangle.push(currentRow);
+        }
+
+        return triangle;
+    }
+
+    // 示例：生成前 5 行的杨辉三角
+    console.log(generate(5));
+</script>
+</html>
